@@ -1112,6 +1112,7 @@ var capacitorPlugin = (function (exports, acquisitionSdk, filesystem, core, http
                     if (yield FileUtil.fileExists(filesystem.Directory.Data, file)) {
                         yield filesystem.Filesystem.deleteFile({ directory: filesystem.Directory.Data, path: file });
                     }
+                    http.Http.addListener("progress", (e) => downloadProgress({ totalBytes: e.contentLength, receivedBytes: e.bytes }));
                     yield http.Http.downloadFile({
                         url: this.downloadUrl,
                         method: "GET",
@@ -1138,7 +1139,7 @@ var capacitorPlugin = (function (exports, acquisitionSdk, filesystem, core, http
                 localPackage.failedInstall = installFailed;
                 localPackage.localPath = fullPath;
                 CodePushUtil.logMessage("Package download success: " + JSON.stringify(localPackage));
-                Sdk.reportStatusDownload(localPackage, localPackage.deploymentKey);
+                yield Sdk.reportStatusDownload(localPackage, localPackage.deploymentKey);
                 return localPackage;
             });
         }

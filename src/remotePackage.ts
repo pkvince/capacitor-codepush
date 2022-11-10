@@ -51,13 +51,15 @@ export class RemotePackage extends Package implements IRemotePackage {
       if (await FileUtil.fileExists(Directory.Data, file)) {
         await Filesystem.deleteFile({ directory: Directory.Data, path: file });
       }
-
+      Http.addListener("progress", (e) => downloadProgress({totalBytes: e.contentLength, receivedBytes: e.bytes} ));
       await Http.downloadFile({
         url: this.downloadUrl,
         method: "GET",
         filePath: file,
         fileDirectory: Directory.Data,
         responseType: "blob"
+      }).then(() => {
+        Http.removeAllListeners();
       });
     } catch (e) {
       CodePushUtil.throwError(new Error("An error occured while downloading the package. " + (e && e.message) ? e.message : ""));
@@ -78,7 +80,7 @@ export class RemotePackage extends Package implements IRemotePackage {
     localPackage.localPath = fullPath;
 
     CodePushUtil.logMessage("Package download success: " + JSON.stringify(localPackage));
-    Sdk.reportStatusDownload(localPackage, localPackage.deploymentKey);
+    await Sdk.reportStatusDownload(localPackage, localPackage.deploymentKey);
 
     return localPackage;
   }

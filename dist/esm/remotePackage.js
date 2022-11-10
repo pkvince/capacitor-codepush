@@ -51,6 +51,7 @@ export class RemotePackage extends Package {
                 if (yield FileUtil.fileExists(Directory.Data, file)) {
                     yield Filesystem.deleteFile({ directory: Directory.Data, path: file });
                 }
+                Http.addListener("progress", (e) => downloadProgress({ totalBytes: e.contentLength, receivedBytes: e.bytes }));
                 yield Http.downloadFile({
                     url: this.downloadUrl,
                     method: "GET",
@@ -77,7 +78,7 @@ export class RemotePackage extends Package {
             localPackage.failedInstall = installFailed;
             localPackage.localPath = fullPath;
             CodePushUtil.logMessage("Package download success: " + JSON.stringify(localPackage));
-            Sdk.reportStatusDownload(localPackage, localPackage.deploymentKey);
+            yield Sdk.reportStatusDownload(localPackage, localPackage.deploymentKey);
             return localPackage;
         });
     }
