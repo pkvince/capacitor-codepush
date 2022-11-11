@@ -51,15 +51,24 @@ export class RemotePackage extends Package implements IRemotePackage {
       if (await FileUtil.fileExists(Directory.Data, file)) {
         await Filesystem.deleteFile({ directory: Directory.Data, path: file });
       }
-      Http.addListener("progress", (e) => downloadProgress({totalBytes: e.contentLength, receivedBytes: e.bytes} ));
+      let progress = false;
+      let listener = undefined;
+      if (typeof downloadProgress === "function") {
+        progress = true;
+        listener = await Http.addListener("progress", (e) => {
+          return downloadProgress({totalBytes: e.contentLength, receivedBytes: e.bytes} );
+        });
+      }
+
       await Http.downloadFile({
         url: this.downloadUrl,
         method: "GET",
         filePath: file,
         fileDirectory: Directory.Data,
-        responseType: "blob"
+        responseType: "blob",
+        progress: progress,
       }).then(() => {
-        Http.removeAllListeners();
+        if (listener) listener.remove();
       });
     } catch (e) {
       CodePushUtil.throwError(new Error("An error occured while downloading the package. " + (e && e.message) ? e.message : ""));

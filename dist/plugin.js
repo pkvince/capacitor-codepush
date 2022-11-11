@@ -1112,13 +1112,24 @@ var capacitorPlugin = (function (exports, acquisitionSdk, filesystem, core, http
                     if (yield FileUtil.fileExists(filesystem.Directory.Data, file)) {
                         yield filesystem.Filesystem.deleteFile({ directory: filesystem.Directory.Data, path: file });
                     }
-                    http.Http.addListener("progress", (e) => downloadProgress({ totalBytes: e.contentLength, receivedBytes: e.bytes }));
+                    let progress = false;
+                    let listener = undefined;
+                    if (typeof downloadProgress === "function") {
+                        progress = true;
+                        listener = yield http.Http.addListener("progress", (e) => {
+                            return downloadProgress({ totalBytes: e.contentLength, receivedBytes: e.bytes });
+                        });
+                    }
                     yield http.Http.downloadFile({
                         url: this.downloadUrl,
                         method: "GET",
                         filePath: file,
                         fileDirectory: filesystem.Directory.Data,
-                        responseType: "blob"
+                        responseType: "blob",
+                        progress: progress,
+                    }).then(() => {
+                        if (listener)
+                            listener.remove();
                     });
                 }
                 catch (e) {
