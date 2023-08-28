@@ -4,6 +4,8 @@
 
 # Capacitor Plugin for CodePush
 
+Capacitor v5 only
+
 This plugin provides client-side integration for the [CodePush service](https://microsoft.github.io/code-push/), allowing you to easily add a dynamic update experience to your Capacitor app(s).
 
 <!-- Capacitor Catalog -->

@@ -8,13 +8,13 @@
   "homepage": "https://github.com/nerdfrenzs/capacitor-codepush",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nerdFrenzs/capacitor-codepush.git"
+    "url": "git+https://github.com/nerdfrenzs/capacitor-codepush.git"
   },
   "bugs": {
-    "url": "https://github.com/nerdFrenzs/capacitor-codepush/issues"
+    "url": "https://github.com/nerdfrenzs/capacitor-codepush/issues"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "access": "public"
   },
   "scripts": {
     "lint": "npm run prettier -- --check && npm run swiftlint -- lint",
