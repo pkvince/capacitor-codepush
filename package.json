@@ -1,12 +1,18 @@
 {
-  "name": "capacitor-codepush",
+  "name": "@nerdfrenzs/capacitor-codepush",
   "version": "1.0.0",
-  "description": "CodePush Plugin for Capacitor",
+  "description": "CodePush Plugin for Capacitor v5",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "type": "module",
-  "homepage": "https://github.com/mapiacompany/capacitor-codepush",
-  "repository": "github:mapiacompany/capacitor-codepush",
+  "homepage": "https://github.com/nerdfrenzs/capacitor-codepush",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nerdFrenzs/capacitor-codepush.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nerdFrenzs/capacitor-codepush/issues"
+  },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/"
   },
@@ -27,7 +33,7 @@
     "capacitor-android",
     "capacitor-ios"
   ],
-  "author": "MAPIACOMPANY",
+  "author": "Nerdfrenz",
   "license": "MIT",
   "devDependencies": {
     "@capacitor-community/http": "^1.4.1",
