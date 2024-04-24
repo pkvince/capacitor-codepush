@@ -1,7 +1,7 @@
 {
   "name": "@nerdfrenzs/capacitor-codepush",
-  "version": "1.0.4",
-  "description": "CodePush Plugin for Capacitor v5",
+  "version": "2.0.1",
+  "description": "CodePush Plugin for Capacitor v6",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "type": "module",
@@ -36,10 +36,10 @@
   "author": "Nerdfrenz",
   "license": "MIT",
   "devDependencies": {
-    "@capacitor/cli": "^5.0.3",
-    "@capacitor/device": "^5.0.2",
-    "@capacitor/dialog": "^5.0.2",
-    "@capacitor/filesystem": "^5.1.3",
+    "@capacitor/cli": "^6.0.0",
+    "@capacitor/device": "^6.0.0",
+    "@capacitor/dialog": "^6.0.0",
+    "@capacitor/filesystem": "^6.0.0",
     "@commitlint/cli": "^17.6.3",
     "@commitlint/config-conventional": "^17.6.3",
     "@rollup/plugin-node-resolve": "^15.0.2",
@@ -72,13 +72,13 @@
     "typescript": "~5.0.4"
   },
   "dependencies": {
-    "code-push": "4.0.5"
+    "code-push": "4.2.1"
   },
   "peerDependencies": {
-    "@capacitor/core": "^5.0.3",
-    "@capacitor/device": "^5.0.2",
-    "@capacitor/dialog": "^5.0.2",
-    "@capacitor/filesystem": "^5.0.2"
+    "@capacitor/core": "^6.0.0",
+    "@capacitor/device": "^6.0.0",
+    "@capacitor/dialog": "^6.0.0",
+    "@capacitor/filesystem": "^6.0.0"
   },
   "capacitor": {
     "android": {
