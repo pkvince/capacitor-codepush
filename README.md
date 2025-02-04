@@ -48,7 +48,7 @@ Once you've followed the general-purpose ["getting started"](https://docs.micros
 
 ```shell
 npm i @capacitor/device @capacitor/dialog @capacitor/filesystem -D
-npm i @nerdfrenzs/capacitor-codepush -D
+npm i @pkvince/capacitor-codepush -D
 npx cap sync
 ```
 
@@ -101,7 +101,7 @@ With the Capacitor plugin installed and configured, the only thing left is to ad
 The simplest way to do this is to perform the following in your app's `deviceready` event handler:
 
 ```javascript
-import { codePush } from '@nerdfrenzs/capacitor-codepush';
+import { codePush } from '@pkvince/capacitor-codepush';
 codePush.sync();
 ```
 
@@ -110,7 +110,7 @@ If an update is available, it will be silently downloaded, and installed the nex
 If you would like your app to discover updates more quickly, you can also choose to call `sync` every time the app resumes from the background, by adding the following code (or something equivalent) as part of your app's startup behavior. You can call `sync` as frequently as you would like, so when and where you call it just depends on your personal preference.
 
 ```javascript
-import { codePush } from '@nerdfrenzs/capacitor-codepush';
+import { codePush } from '@pkvince/capacitor-codepush';
 import { Plugins, AppState } from '@capacitor/core';
 
 const { App } = Plugins;

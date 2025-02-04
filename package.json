@@ -1,17 +1,17 @@
 {
-  "name": "@nerdfrenzs/capacitor-codepush",
+  "name": "@pkvince/capacitor-codepush",
   "version": "2.0.1",
   "description": "CodePush Plugin for Capacitor v6",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "type": "module",
-  "homepage": "https://github.com/nerdfrenzs/capacitor-codepush",
+  "homepage": "https://github.com/pkvince/capacitor-codepush",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nerdfrenzs/capacitor-codepush.git"
+    "url": "git+https://github.com/pkvince/capacitor-codepush.git"
   },
   "bugs": {
-    "url": "https://github.com/nerdfrenzs/capacitor-codepush/issues"
+    "url": "https://github.com/pkvince/capacitor-codepush/issues"
   },
   "publishConfig": {
     "access": "public"
@@ -33,7 +33,7 @@
     "capacitor-android",
     "capacitor-ios"
   ],
-  "author": "Nerdfrenz",
+  "author": "pkvince",
   "license": "MIT",
   "devDependencies": {
     "@capacitor/cli": "^6.0.0",
